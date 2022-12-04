@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/b05f4c9c1f.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <style>
+        *{box-sizing:border-box;}
+        body{
+            font-family: Verdana,sans-serif;
+            padding:0;
+            margin:0;
+            background-color: black;
+        }
+
+        .asidenav ul{
+            list-style:none;
+            background-color:#333;
+            width:120px;
+            padding:0;
+            margin:0;
+            position:fixed;
+            overflow:auto;
+            top:0;
+            bottom:0;
+            z-index:1;
+        }
+        .asidenav ul li i{
+            font-size:34px;
+        }
+        .asidenav ul li:not(#prph){
+            color:White;
+            text-align: center;
+            padding:10px;
+        }
+        .asidenav ul #active{
+            background-color:black;
+        }
+        .asidenav ul #active:hover{
+           background-color:#aaa;
+            color:white;
+        }
+        .asidenav ul li:hover:not(#active,#prph){
+            background-color:black;
+        }
+        .main{
+            margin-left:120px;
+        }
+        .maininfo{
+            max-width:1500px;
+            margin:auto;
+        }
+        .headerimg{
+            color:white;
+            text-align: center;
+            padding:60px;
+        }
+        .about{
+            color:white;
+            padding:60px;
+        }
+        .white{
+            background-color:white;
+            width:100%;
+        }
+        .white .grey1{
+            width:95%;
+            background-color:grey;
+            padding:20px;
+        }
+        .white .grey2{
+            width:75%;
+            background-color: grey;
+            padding:20px;
+        }
+        .white .grey3{
+            width:50%;
+            background-color:grey;
+            padding:20px;
+        }
+        .flexcont{
+            display:flex;
+            flex-direction:row;
+            flex-wrap: nowrap;
+            background-color:#ccc;
+            color:black;
+        }
+        .flex1{
+            flex:25%;
+            text-align: center;
+            padding:15px;
+        }
+        #but1{
+            border:none;
+            padding:13px;
+            width:200px;
+        }
+        #but1:hover{
+            background-color:#ccc;
+        }
+        .card ul{
+            list-style:none;
+            padding:0;
+            margin:0;
+        }
+        .card ul li:not(#cardhead,#cardfoot){
+            background-color:white;
+            color:black;
+            padding:15px;
+            text-align: center;
+            border-bottom: 1px solid grey;
+        }
+        .card ul #cardhead{
+            text-align:center;
+            background-color:#333;
+            color:white;
+            padding:25px;
+        }
+        .card ul #cardfoot{
+           background-color:#f1f1f1;
+           padding:20px;
+           text-align:center;
+        }
+        .card ul #cardfoot .but2{
+            border:none;
+            background-color:white;
+            padding:10px;
+            width:100px;
+            transition:0.5s ease;
+        }
+        .card ul #cardfoot .but2:hover{
+            background-color:black;
+            color:white;
+            transform: translateY(-5px);
+        }
+        .suggest{
+            display:flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            gap:10px;
+            margin-top:10px;
+        }
+        .suggest .card{
+            flex:50%;
+            opacity:0.8;
+            transition: 0.5s ease;
+        }
+        .suggest .card:hover{
+            opacity:1;
+        }
+        .imgcont{
+            display:flex;
+            margin-bottom:25px;
+        }
+        .imgcont img{
+            width:100px;
+            height:100px;
+            border-radius:50%;
+        }
+        .imgcont p{
+            margin-left:10px;
+            font-size: 14px;
+        }
+        .imgcont div p span{
+            margin-left:20px;
+        }
+        .imgflex ul{
+            list-style:none;
+            padding:0;
+            margin:0;
+        }
+        .aboutphotos{
+            margin-top:100px;
+        }
+        .photo-album{
+            display:flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            gap:10px;
+        }
+        .photo-album .rightal,.photo-album .leftal{
+            flex:50%;
+        }
+        .contact{
+            margin-top:100px;
+        }
+        .contact .icons div{
+            margin-bottom: 20px;
+            font-size:20px;
+        }
+        .contact .icons div span{
+            margin-left:15px;
+        }
+        .contact .icons div i{
+            font-size: 34px;
+        }
+        input[type=text]{
+            width:100%;
+            border:none;
+            padding:15px;
+            margin:5px;
+        }
+        textarea{
+            width:100%;
+            border:none;
+            padding: 15px;
+            resize: none;
+            margin:5px;
+        }
+        #but3{
+            border:none;
+            padding:10px;
+            width:150px;
+            margin:5px;
+        }
+        #but3:hover{
+            background-color:#aaa;
+        }
+        .last-icon{
+            padding:60px;
+            display: flex;
+            justify-content: flex-start;
+            gap:13px;
+        }
+        .last-icon i{
+            color:#333;
+            font-size: 24px;
+            transition:0.7s ease;
+        }
+        .last-icon i:hover{
+            color:chocolate;
+        }
+        .footer p {
+            color:#333;
+            padding:60px;
+            margin-top:-100px;
+        }
+        .footer p a{
+            text-decoration: none;
+            color:#333;
+            transition:0.7s ease;
+        }
+        .footer p a:hover{
+            color:crimson;
+        }
+        .appearnav ul{
+            display:none;
+            list-style:none;
+            margin:0;
+            padding:0;
+            overflow: hidden;
+            background-color: black;
+            opacity: 0.7;
+            position: fixed;
+            top:0;
+            left:0;
+            right:0;
+        }
+        .appearnav ul:hover{
+            opacity:1;
+        }
+        .appearnav ul a{
+            float:left;
+            width:25%;
+            text-align: center;
+            padding:13px;
+            text-decoration: none;
+            color:White;
+        }
+        .appearnav ul a:hover{
+            background-color:#f1f1f1;
+            color:black;
+        }
+        @media only screen and (max-width:600px){
+            .asidenav{
+                display:none;
+            }
+            .main{
+                margin-left:0;
+            }
+            .flexcont,.suggest,.photo-album{
+                flex-direction:column;
+            }
+            .appearnav ul{
+                display:block;
+            }
+
+        }
+    </style>
+
+    <div class="appearnav">
+        <ul>
+            <a href="#">HOME</a>
+            <a href="#">ABOUT</a>
+            <a href="#">PHOTOS</a>
+            <a href="#">CONTACT</a>
+        </ul>
+    </div>
+
+    <div class="asidenav">
+        <ul>
+            <li id="prph">
+                <img style="width:100%;height:Auto;" src="https://www.w3schools.com/w3images/avatar_smoke.jpg" alt="ph">
+            </li>
+            <li id="active">
+                <i class="fa-sharp fa-solid fa-house"></i>
+                <p>HOME</p>
+            </li>
+            <li>
+                <i class="fa-sharp fa-solid fa-user"></i>
+                <p>ABOUT</p>
+            </li>
+            <li>
+                <i class="fa-sharp fa-solid fa-eye"></i>
+                <p>PHOTOS</p>
+            </li>
+            <li>
+                <i class="fa-sharp fa-solid fa-envelope"></i>
+                <p>CONTACT</p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="main">
+        <div class="maininfo">
+            <div class="headerimg">
+        <h1 style="font-size:54px;">I'm John Doe.</h1>
+        <p>Photographer and Web Designer</p>
+        <img style="width:100%;height:auto;" src="https://www.w3schools.com/w3images/man_smoke.jpg" alt="prph">
+            </div><br>
+            <div class="about">
+                <h2>My Name</h2><hr align="left" style="width:200px;">
+                <p>Some text about me. Some text about me. I am lorem ipsum consectetur adipiscing
+                 elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim 
+                 ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
+                 commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
+                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum 
+                  consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
+                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                 laboris nisi ut aliquip ex ea commodo consequat.</p><br>
+                 <h3>My Skills</h3><br>
+                 <h4>Photography</h4>
+                 <div class="white"><div class="grey1"></div></div>
+                 <h4>Web Design</h4>
+                 <div class="white"><div class="grey2"></div></div>
+                 <h4>Photoshop</h4>
+                 <div class="white"><div class="grey3"></div></div><br>
+                 <div class="flexcont">
+                    <div class="flex1">
+                        <h3>11+</h3>
+                        <p>Partners</p>
+                    </div>
+                    <div class="flex1">
+                        <h3>55+</h3>
+                        <p>Projects Done</p>
+                    </div>
+                    <div class="flex1">
+                        <h3>89+</h3>
+                        <p>Happy Clients</p>
+                    </div>
+                    <div class="flex1">
+                        <h3>150+</h3>
+                        <p>Meetings</p>
+                    </div>
+                 </div><br>
+                 <button id="but1"><i class="fa-sharp fa-solid fa-download"></i> Download Resume</button><br>
+                 <h3>My Price</h3>
+                 <div class="suggest">
+
+                    <div class="card">
+                     <ul>
+                        <li id="cardhead">
+                            <h3>Basic</h3>
+                        </li>
+                        <li>Web Design</li>
+                        <li>Photography</li>
+                        <li>5GB Storage</li>
+                        <li>Mail Support</li>
+                        <li>
+                            <h3>$ 10</h3>
+                            <span>per month</span>
+                        </li>
+                        <li id="cardfoot">
+                            <button class="but2">Sign Up</button>
+                        </li>
+                     </ul>
+                    </div>
+
+                    <div class="card">
+                        <ul>
+                           <li id="cardhead">
+                               <h3>Pro</h3>
+                           </li>
+                           <li>Web Design</li>
+                           <li>Photography</li>
+                           <li>5GB Storage</li>
+                           <li>Mail Support</li>
+                           <li>
+                               <h3>$ 10</h3>
+                               <span>per month</span>
+                           </li>
+                           <li id="cardfoot">
+                               <button class="but2">Sign Up</button>
+                           </li>
+                        </ul>
+                       </div>
+
+                 </div>
+
+                 <div class="reput">
+                    <h3>My Reputation</h3><br>
+                    <div class="imgflex">
+                        <ul>
+                            <li>
+                                <div class="imgcont">
+                                    <img src="https://www.w3schools.com/w3images/bandmember.jpg" alt="ph">
+                                    <div><p>Chris Fox. <span> CEO at Mighty Schools.</span></p>
+                                        <p>John Doe saved us from a web disaster.</p></div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="imgcont">
+                                    <img src="https://www.w3schools.com/w3images/avatar_g2.jpg" alt="ph">
+                                    <div><p>Rebecca Flex. <span> CEO at Company.</span></p>
+                                    <p>No one is better than John Doe.</p></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                 </div>
+
+                <div class="aboutphotos">
+                    <h2>My Photos</h2>
+                    <hr style="width:200px;"align="left"><br>
+                 <div class="photo-album">
+                    <div class="leftal">
+                        <img style="width:100%;height:Auto;" src="https://www.w3schools.com/w3images/wedding.jpg" alt="album">
+                        <img style="width:100%;height:Auto;" src="https://www.w3schools.com/w3images/rocks.jpg" alt="album">
+                        <img style="width:100%;height:Auto;" src="https://www.w3schools.com/w3images/sailboat.jpg" alt="album">
+                    </div>
+                    <div class="rightal">
+                        <img style="width:100%;height:auto;" src="https://www.w3schools.com/w3images/underwater.jpg" alt="album">
+                        <img style="width:100%;height:auto;" src="https://www.w3schools.com/w3images/chef.jpg" alt="album">
+                        <img style="width:100%;height:auto;" src="https://www.w3schools.com/w3images/wedding.jpg" alt="album">
+                        <img style="width:100%;height:auto;" src="https://www.w3schools.com/w3images/p6.jpg" alt="album">
+                    </div>
+                 </div>
+                </div>
+
+                <div class="contact">
+                    <h2>Contact Me</h2>
+                    <hr style="width:200px;" align="left"><br>
+                    <div class="icons">
+                    <div><i class="fa-sharp fa-solid fa-location-dot"></i><span> Chicago, US</span></div>
+                    <div><i class="fa-sharp fa-solid fa-phone"></i><span> Phone: +00 151515</span></div>
+                    <div><i class="fa-sharp fa-solid fa-envelope"></i><span> Email: mail@mail.com</span></div>
+                    </div><br>
+
+                    <form action="#">
+                        <p>Let's get in touch. Send me a message:</p>
+                        <input type="text" placeholder="Name">
+                        <input type="text" placeholder="Email">
+                        <input type="text" placeholder="Subject">
+                        <textarea placeholder="Message"></textarea>
+                        <button id="but3"><i class="fa-sharp fa-solid fa-paper-plane"></i> SEND MESSAGE</button>
+                    </form>
+                </div>
+
+            </div>
+
+            <div class="footer">
+                <div class="last-icon">
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-snapchat"></i>
+                    <i class="fa-brands fa-pinterest-p"></i>
+                    <i class="fa-brands fa-twitter"></i>
+                    <i class="fa-brands fa-linkedin"></i>
+                </div>
+                <p> Created by<a href="#"> Saba Fesvianidze</a></p>
+            </div>
+
+        </div>
+    </div>
+
+ 
+</body>
+</html>
